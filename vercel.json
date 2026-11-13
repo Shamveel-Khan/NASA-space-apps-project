@@ -1,0 +1,45 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "app": {
+      "root": "services/app",
+      "framework": "fastapi",
+      "runtime": "python",
+      "entrypoint": "main:app",
+      "buildCommand": "python ../../tools/stage_vercel.py app",
+      "bindings": [
+        {
+          "type": "service",
+          "service": "navcam",
+          "format": "url",
+          "env": "NAVCAM3D_URL"
+        }
+      ],
+      "functions": {
+        "main.py": {
+          "includeFiles": "site/**"
+        }
+      }
+    },
+    "navcam": {
+      "root": "services/navcam3d",
+      "framework": "fastapi",
+      "runtime": "python",
+      "entrypoint": "main:app",
+      "buildCommand": "python ../../tools/stage_vercel.py navcam3d",
+      "functions": {
+        "main.py": {
+          "includeFiles": "dataset/**"
+        }
+      }
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "app"
+      }
+    }
+  ]
+}
