@@ -49,9 +49,9 @@ def main():
     frames = OUT / "frames"
     shutil.rmtree(frames, ignore_errors=True)
     frames.mkdir(parents=True)
-    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=str(ROOT / "app")))
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=str(ROOT)))
     threading.Thread(target=srv.serve_forever, daemon=True).start()
-    url = f"http://127.0.0.1:{srv.server_address[1]}/index.html"
+    url = f"http://127.0.0.1:{srv.server_address[1]}/app/index.html"
     args = (["--use-angle=vulkan", "--enable-features=Vulkan", "--ignore-gpu-blocklist"] if a.gpu == "vulkan"
             else ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"])
     n = 0

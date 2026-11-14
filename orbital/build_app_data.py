@@ -214,7 +214,7 @@ for s in feed("weather")["soles"]:
 print(f"weather for {len(weather)} sols")
 
 # ---- every stop already turned into 3D by navcam3d/build_stop.py ----
-closeups = []
+closeups, closeup_variants = [], []
 for sj in sorted((APP / "stops").glob("sol*/scene.json")):
     m = json.loads(sj.read_text())
     st = m.get("stop") or {}
@@ -222,13 +222,20 @@ for sj in sorted((APP / "stops").glob("sol*/scene.json")):
         continue
     x, y = to_px(st["lon"], st["lat"])
     if inside(x, y):
-        closeups.append({"sol": m["sol"], "folder": f"stops/{sj.parent.name}", "x": round(x, 1), "y": round(y, 1),
+        entry = {"sol": m["sol"], "folder": f"stops/{sj.parent.name}", "x": round(x, 1), "y": round(y, 1),
                          "elev": st["elev_geoid"], "photos": len(m["frames"]),
                          "error": round(m["summary"]["median_da_absrel"], 4), "area_m2": round(m["map"]["area_m2"]),
                          "model": m.get("depth_model", "Depth Anything V2 Small (pretrained)"),
                          # rocks/ledges in map metres: [x, y, height above ground, 1 if estimated by Depth Anything]
                          "hazards": [[round(x + h["east"], 2), round(y + h["south"], 2), h["height"], int(h["estimated"])]
-                                     for h in m.get("hazards", [])]})
+                                     for h in m.get("hazards", [])]}
+        if m.get("variant") == "mastcam-color":
+            entry.update(id=f"{m['sol']}-color", label=f"Sol {m['sol']} · Mastcam color",
+                         variant=m["variant"], color_coverage=m["colorization"]["vertex_coverage"],
+                         color_photos=len(m["colorization"]["images"]))
+            closeup_variants.append(entry)
+        else:
+            closeups.append(entry)
 print(f"{len(closeups)} stops with 3D close-ups ({sum(len(c['hazards']) for c in closeups)} rocks/ledges):",
       ", ".join(f"sol {c['sol']}" for c in closeups))
 data = {
@@ -236,7 +243,7 @@ data = {
                "rows": h // GRID, "height_min": hmin, "map_px_m": 1,
                "source": "USGS Astrogeology MSL Gale merged DEM 1 m v3 and orthophoto 25 cm v3"},
     "stops": stops, "path": path, "weather": weather,
-    "closeups": closeups,
+    "closeups": closeups, "closeup_variants": closeup_variants,
     "radiation": {"msv_per_day": 0.64, "source": "Curiosity RAD, Hassler et al., Science 2014"},
     "results": results_summary(closeups),
     "cost_grid": {"file": "cost.b64.txt", "cols": w // GRID, "rows": h // GRID,

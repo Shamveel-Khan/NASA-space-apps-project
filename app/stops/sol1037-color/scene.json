@@ -1,0 +1,798 @@
+{
+ "sol": 1037,
+ "time": "2015-07-07T17:02:29.165",
+ "site_drive": "0481964",
+ "stop": {
+  "RMC": "48_1964",
+  "site": 48,
+  "drive": 1964,
+  "sol": 1037,
+  "easting": 8142577.852,
+  "northing": -276687.412,
+  "elev_geoid": -4447.508,
+  "lon": 137.3702135,
+  "lat": -4.667884,
+  "roll": -2.74,
+  "pitch": -9.82,
+  "yaw": 16.3,
+  "yaw_rad": 0.28456,
+  "tilt": 10.19,
+  "dist_m": 5.5,
+  "dist_total_m": 10861.35,
+  "dist_km": 10.64,
+  "dist_mi": 6.61,
+  "drive_type": "final"
+ },
+ "rover_heading": 16.304193348054646,
+ "frames": [
+  {
+   "stereo_cover": 0.457,
+   "da_absrel": 0.0209,
+   "da_within25": 1.0,
+   "da_absrel_plain": 0.021,
+   "align": "weighted",
+   "filled_cover": 0.6216,
+   "id": "NLB_489559555RASLF0481964NCAM00399M1",
+   "azimuth": 350.259,
+   "elevation": -62.7036
+  },
+  {
+   "stereo_cover": 0.5548,
+   "da_absrel": 0.0191,
+   "da_within25": 0.9999,
+   "da_absrel_plain": 0.0191,
+   "align": "plain",
+   "filled_cover": 0.7792,
+   "id": "NLB_489559578RASLF0481964NCAM00399M1",
+   "azimuth": 29.3664,
+   "elevation": -61.8625
+  },
+  {
+   "stereo_cover": 0.524,
+   "da_absrel": 0.0547,
+   "da_within25": 0.9981,
+   "da_absrel_plain": 0.0628,
+   "align": "power",
+   "filled_cover": 0.7393,
+   "id": "NLB_489560385RASLF0481964NCAM00279M1",
+   "azimuth": 314.9701,
+   "elevation": -16.92
+  },
+  {
+   "stereo_cover": 0.517,
+   "da_absrel": 0.0703,
+   "da_within25": 0.9942,
+   "da_absrel_plain": 0.1597,
+   "align": "power",
+   "filled_cover": 0.6316,
+   "id": "NLB_489560416RASLF0481964NCAM00279M1",
+   "azimuth": 344.632,
+   "elevation": -16.9067
+  },
+  {
+   "stereo_cover": 0.5013,
+   "da_absrel": 0.1026,
+   "da_within25": 0.9367,
+   "da_absrel_plain": 0.5926,
+   "align": "power",
+   "filled_cover": 0.5758,
+   "id": "NLB_489560447RASLF0481964NCAM00279M1",
+   "azimuth": 14.7933,
+   "elevation": -16.9306
+  },
+  {
+   "stereo_cover": 0.5105,
+   "da_absrel": 0.0864,
+   "da_within25": 0.9894,
+   "da_absrel_plain": 0.7042,
+   "align": "power",
+   "filled_cover": 0.6023,
+   "id": "NLB_489560471RASLF0481964NCAM00279M1",
+   "azimuth": 44.7239,
+   "elevation": -16.9647
+  },
+  {
+   "stereo_cover": 0.5819,
+   "da_absrel": 0.1143,
+   "da_within25": 0.9571,
+   "da_absrel_plain": 0.8733,
+   "align": "power",
+   "filled_cover": 0.6847,
+   "id": "NLB_489560495RASLF0481964NCAM00279M1",
+   "azimuth": 74.749,
+   "elevation": -16.9502
+  },
+  {
+   "stereo_cover": 0.6418,
+   "da_absrel": 0.0287,
+   "da_within25": 0.9993,
+   "da_absrel_plain": 0.029,
+   "align": "weighted",
+   "filled_cover": 0.9269,
+   "id": "NLB_489560527RASLF0481964NCAM00354M1",
+   "azimuth": 55.3468,
+   "elevation": -53.4905
+  },
+  {
+   "stereo_cover": 0.5985,
+   "da_absrel": 0.0298,
+   "da_within25": 1.0,
+   "da_absrel_plain": 0.0298,
+   "align": "plain",
+   "filled_cover": 0.9378,
+   "id": "NLB_489560558RASLF0481964NCAM00354M1",
+   "azimuth": 86.736,
+   "elevation": -48.603
+  },
+  {
+   "stereo_cover": 0.612,
+   "da_absrel": 0.0244,
+   "da_within25": 1.0,
+   "da_absrel_plain": 0.0244,
+   "align": "plain",
+   "filled_cover": 0.9785,
+   "id": "NLB_489560582RASLF0481964NCAM00354M1",
+   "azimuth": 115.4301,
+   "elevation": -43.4216
+  },
+  {
+   "stereo_cover": 0.5401,
+   "da_absrel": 0.0172,
+   "da_within25": 1.0,
+   "da_absrel_plain": 0.0172,
+   "align": "plain",
+   "filled_cover": 0.9025,
+   "id": "NLB_489560613RASLF0481964NCAM00354M1",
+   "azimuth": 142.0791,
+   "elevation": -39.3014
+  },
+  {
+   "stereo_cover": 0.3338,
+   "da_absrel": 0.0174,
+   "da_within25": 0.9977,
+   "da_absrel_plain": 0.0174,
+   "align": "plain",
+   "filled_cover": 0.6866,
+   "id": "NLB_489560644RASLF0481964NCAM00354M1",
+   "azimuth": 167.9778,
+   "elevation": -37.0202
+  },
+  {
+   "stereo_cover": 0.7275,
+   "da_absrel": 0.1182,
+   "da_within25": 0.9579,
+   "da_absrel_plain": 1.1255,
+   "align": "power",
+   "filled_cover": 0.839,
+   "id": "NLB_489560681RASLF0481964NCAM07753M1",
+   "azimuth": 104.9671,
+   "elevation": -16.9078
+  },
+  {
+   "stereo_cover": 0.7943,
+   "da_absrel": 0.1002,
+   "da_within25": 0.957,
+   "da_absrel_plain": 0.1555,
+   "align": "weighted",
+   "filled_cover": 0.9732,
+   "id": "NLB_489560712RASLF0481964NCAM07753M1",
+   "azimuth": 134.5554,
+   "elevation": -16.9982
+  },
+  {
+   "stereo_cover": 0.7008,
+   "da_absrel": 0.0689,
+   "da_within25": 0.9658,
+   "da_absrel_plain": 0.086,
+   "align": "weighted",
+   "filled_cover": 0.9278,
+   "id": "NLB_489560743RASLF0481964NCAM07753M1",
+   "azimuth": 164.776,
+   "elevation": -16.9596
+  },
+  {
+   "stereo_cover": 0.1716,
+   "da_absrel": 0.1202,
+   "da_within25": 0.8283,
+   "da_absrel_plain": 0.1202,
+   "align": "plain",
+   "filled_cover": 0.6639,
+   "id": "NLB_489560775RASLF0481964NCAM07753M1",
+   "azimuth": 194.8193,
+   "elevation": -16.9146
+  },
+  {
+   "stereo_cover": 0.1588,
+   "da_absrel": 0.1524,
+   "da_within25": 0.8157,
+   "da_absrel_plain": 0.1524,
+   "align": "plain",
+   "filled_cover": 0.3919,
+   "id": "NLB_489560859RASLF0481964NCAM07753M1",
+   "azimuth": 224.9349,
+   "elevation": -16.8928
+  },
+  {
+   "stereo_cover": 0.5375,
+   "da_absrel": 0.1262,
+   "da_within25": 0.8602,
+   "da_absrel_plain": 0.243,
+   "align": "weighted",
+   "filled_cover": 0.6503,
+   "id": "NLB_489560890RASLF0481964NCAM07753M1",
+   "azimuth": 254.6861,
+   "elevation": -16.8504
+  },
+  {
+   "stereo_cover": 0.543,
+   "da_absrel": 0.0834,
+   "da_within25": 0.9758,
+   "da_absrel_plain": 0.1318,
+   "align": "weighted",
+   "filled_cover": 0.8569,
+   "id": "NLB_489560921RASLF0481964NCAM07753M1",
+   "azimuth": 284.7601,
+   "elevation": -16.9008
+  }
+ ],
+ "show_frame": 9,
+ "depth_model": "Depth Anything V2 Small (pretrained)",
+ "hazards": [
+  {
+   "east": 0.62,
+   "south": 10.09,
+   "height": 1.41,
+   "area": 0.517,
+   "estimated": true
+  },
+  {
+   "east": -5.25,
+   "south": 11.84,
+   "height": 0.7,
+   "area": 14.377,
+   "estimated": true
+  },
+  {
+   "east": -7.92,
+   "south": 22.03,
+   "height": 0.63,
+   "area": 0.45,
+   "estimated": true
+  },
+  {
+   "east": -1.63,
+   "south": -2.44,
+   "height": 0.57,
+   "area": 0.517,
+   "estimated": true
+  },
+  {
+   "east": -8.66,
+   "south": 6.8,
+   "height": 0.52,
+   "area": 1.192,
+   "estimated": true
+  },
+  {
+   "east": -2.62,
+   "south": 21.29,
+   "height": 0.51,
+   "area": 2.902,
+   "estimated": true
+  },
+  {
+   "east": -1.17,
+   "south": -0.9,
+   "height": 0.5,
+   "area": 0.743,
+   "estimated": true
+  },
+  {
+   "east": -6.39,
+   "south": 4.98,
+   "height": 0.49,
+   "area": 0.562,
+   "estimated": true
+  },
+  {
+   "east": -15.14,
+   "south": 11.77,
+   "height": 0.49,
+   "area": 0.877,
+   "estimated": true
+  },
+  {
+   "east": -0.75,
+   "south": 15.9,
+   "height": 0.48,
+   "area": 0.18,
+   "estimated": true
+  },
+  {
+   "east": 2.4,
+   "south": 15.31,
+   "height": 0.48,
+   "area": 0.652,
+   "estimated": true
+  },
+  {
+   "east": -10.99,
+   "south": 8.56,
+   "height": 0.47,
+   "area": 0.787,
+   "estimated": true
+  },
+  {
+   "east": 11.37,
+   "south": 16.53,
+   "height": 0.45,
+   "area": 0.652,
+   "estimated": true
+  },
+  {
+   "east": 13.14,
+   "south": -11.19,
+   "height": 0.43,
+   "area": 0.18,
+   "estimated": true
+  },
+  {
+   "east": 19.21,
+   "south": -6.41,
+   "height": 0.4,
+   "area": 0.27,
+   "estimated": true
+  },
+  {
+   "east": -5.91,
+   "south": 6.51,
+   "height": 0.39,
+   "area": 0.675,
+   "estimated": true
+  },
+  {
+   "east": -13.9,
+   "south": 10.75,
+   "height": 0.39,
+   "area": 0.135,
+   "estimated": true
+  },
+  {
+   "east": -5.17,
+   "south": 4.05,
+   "height": 0.39,
+   "area": 0.18,
+   "estimated": true
+  },
+  {
+   "east": -13.49,
+   "south": 14.12,
+   "height": 0.38,
+   "area": 0.99,
+   "estimated": true
+  },
+  {
+   "east": -7.45,
+   "south": 14.88,
+   "height": 0.38,
+   "area": 0.158,
+   "estimated": true
+  },
+  {
+   "east": -8.74,
+   "south": 9.6,
+   "height": 0.37,
+   "area": 0.675,
+   "estimated": true
+  },
+  {
+   "east": -4.59,
+   "south": 3.51,
+   "height": 0.36,
+   "area": 0.18,
+   "estimated": true
+  },
+  {
+   "east": 19.63,
+   "south": -5.71,
+   "height": 0.36,
+   "area": 0.112,
+   "estimated": true
+  },
+  {
+   "east": -6.99,
+   "south": 7.79,
+   "height": 0.35,
+   "area": 0.202,
+   "estimated": true
+  },
+  {
+   "east": -12.68,
+   "south": 9.79,
+   "height": 0.34,
+   "area": 0.54,
+   "estimated": true
+  },
+  {
+   "east": 17.22,
+   "south": -6.87,
+   "height": 0.34,
+   "area": 0.067,
+   "estimated": true
+  },
+  {
+   "east": -5.1,
+   "south": 7.05,
+   "height": 0.34,
+   "area": 0.09,
+   "estimated": true
+  },
+  {
+   "east": -1.39,
+   "south": 0.81,
+   "height": 0.34,
+   "area": 0.18,
+   "estimated": true
+  },
+  {
+   "east": 0.22,
+   "south": 15.97,
+   "height": 0.34,
+   "area": 0.067,
+   "estimated": true
+  },
+  {
+   "east": -3.02,
+   "south": 14.35,
+   "height": 0.33,
+   "area": 0.135,
+   "estimated": true
+  },
+  {
+   "east": -3.09,
+   "south": -3.58,
+   "height": 0.32,
+   "area": 1.012,
+   "estimated": true
+  },
+  {
+   "east": -16.5,
+   "south": 12.97,
+   "height": 0.32,
+   "area": 0.135,
+   "estimated": true
+  },
+  {
+   "east": -14.6,
+   "south": 18.94,
+   "height": 0.31,
+   "area": 0.112,
+   "estimated": true
+  },
+  {
+   "east": -1.58,
+   "south": 16.05,
+   "height": 0.31,
+   "area": 0.045,
+   "estimated": true
+  },
+  {
+   "east": 20.55,
+   "south": -7.12,
+   "height": 0.31,
+   "area": 0.045,
+   "estimated": true
+  },
+  {
+   "east": -4.36,
+   "south": 4.86,
+   "height": 0.3,
+   "area": 0.202,
+   "estimated": true
+  },
+  {
+   "east": -15.78,
+   "south": 16.32,
+   "height": 0.3,
+   "area": 0.067,
+   "estimated": true
+  },
+  {
+   "east": -2.47,
+   "south": 2.94,
+   "height": 0.3,
+   "area": 0.54,
+   "estimated": true
+  },
+  {
+   "east": -15.23,
+   "south": -13.73,
+   "height": 0.3,
+   "area": 0.202,
+   "estimated": false
+  },
+  {
+   "east": -7.33,
+   "south": 20.65,
+   "height": 0.29,
+   "area": 0.112,
+   "estimated": true
+  },
+  {
+   "east": -10.83,
+   "south": 11.82,
+   "height": 0.29,
+   "area": 0.067,
+   "estimated": true
+  },
+  {
+   "east": -2.03,
+   "south": -3.7,
+   "height": 0.29,
+   "area": 0.135,
+   "estimated": true
+  },
+  {
+   "east": -2.29,
+   "south": 17.21,
+   "height": 0.29,
+   "area": 0.09,
+   "estimated": true
+  },
+  {
+   "east": -3.02,
+   "south": -21.88,
+   "height": 0.29,
+   "area": 0.067,
+   "estimated": true
+  },
+  {
+   "east": -0.23,
+   "south": -21.45,
+   "height": 0.28,
+   "area": 0.045,
+   "estimated": true
+  },
+  {
+   "east": -7.8,
+   "south": 8.25,
+   "height": 0.28,
+   "area": 0.09,
+   "estimated": true
+  },
+  {
+   "east": -8.73,
+   "south": 17.28,
+   "height": 0.28,
+   "area": 0.067,
+   "estimated": true
+  },
+  {
+   "east": 15.9,
+   "south": -5.17,
+   "height": 0.28,
+   "area": 0.045,
+   "estimated": true
+  },
+  {
+   "east": -4.83,
+   "south": 5.38,
+   "height": 0.28,
+   "area": 0.067,
+   "estimated": true
+  },
+  {
+   "east": -3.53,
+   "south": 3.97,
+   "height": 0.28,
+   "area": 0.112,
+   "estimated": true
+  },
+  {
+   "east": -1.07,
+   "south": 13.37,
+   "height": 0.28,
+   "area": 0.067,
+   "estimated": true
+  },
+  {
+   "east": -10.13,
+   "south": -21.45,
+   "height": 0.27,
+   "area": 0.045,
+   "estimated": true
+  },
+  {
+   "east": -14.63,
+   "south": 15.15,
+   "height": 0.27,
+   "area": 0.045,
+   "estimated": true
+  },
+  {
+   "east": -8.03,
+   "south": 8.7,
+   "height": 0.27,
+   "area": 0.045,
+   "estimated": true
+  },
+  {
+   "east": -15.68,
+   "south": -14.1,
+   "height": 0.26,
+   "area": 0.045,
+   "estimated": false
+  },
+  {
+   "east": 14.25,
+   "south": 16.2,
+   "height": 0.26,
+   "area": 0.09,
+   "estimated": true
+  },
+  {
+   "east": 2.33,
+   "south": 13.43,
+   "height": 0.26,
+   "area": 0.067,
+   "estimated": true
+  }
+ ],
+ "hazard_rule": "patches at least 0.25 m above the ground within ~1.5 m",
+ "counts": {
+  "vertices": 80127,
+  "faces": 158851,
+  "faces_stereo": 120197
+ },
+ "layout": [
+  "pos:int16x3 cm",
+  "gray:uint8",
+  "src:uint8",
+  "slope:uint8",
+  "index:uint32x3"
+ ],
+ "frame_face_ranges": [
+  [
+   0,
+   120197,
+   38654
+  ]
+ ],
+ "map": {
+  "cell": 0.25,
+  "radius": 24.0,
+  "height_min": -7.605590871323596,
+  "height_max": 3.198253257099788,
+  "area_m2": 1890.125,
+  "slope_share": {
+   "under15": 0.4138078236572493,
+   "15to25": 0.474774914622788,
+   "over25": 0.11141726171996275
+  },
+  "da_only_share": 0.16225778718338735
+ },
+ "summary": {
+  "median_da_absrel": 0.0703,
+  "median_da_absrel_plain": 0.1202,
+  "worst_da_absrel": 0.1524,
+  "worst_da_absrel_plain": 1.1255,
+  "mean_stereo_cover": 0.5266421052631578,
+  "mean_filled_cover": 0.7563052631578947,
+  "frames_with_stereo": 19
+ },
+ "colorization": {
+  "asset": "color.b64.txt",
+  "mask_asset": "color-mask.b64.txt",
+  "colored_vertices": 2491,
+  "total_vertices": 80127,
+  "vertex_coverage": 0.03108814756573939,
+  "images": [
+   {
+    "product_id": "1037ML0045420010305788E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045420010305788E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045420010305788e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045420030305790E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045420030305790E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045420030305790e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045420000305787E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045420000305787E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045420000305787e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045420020305789E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045420020305789E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045420020305789e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045420040305791E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045420040305791E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045420040305791e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045410040305785E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045410040305785E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045410040305785e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045410050305786E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045410050305786E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045410050305786e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045410030305784E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045410030305784E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045410030305784e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045410020305783E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045410020305783E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045410020305783e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045430010305792E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045430010305792E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045430010305792e01_drcl.xml"
+   },
+   {
+    "product_id": "1037ML0045410000305781E01_DRCL",
+    "sol": 1037,
+    "site": 48,
+    "drive": 1964,
+    "image_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ML0045410000305781E01_DRCL.IMG",
+    "label_url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_mmm/data_MSLMST/volume_0010_calibrated/SURFACE/1037/1037ml0045410000305781e01_drcl.xml"
+   }
+  ],
+  "focus": [
+   -0.23,
+   -2.65,
+   -6.82
+  ],
+  "display_transform": {
+   "low": 65.0,
+   "high": 1477.0,
+   "gamma": 0.45454545454545453
+  },
+  "method": "CAHV projection using same-station Mastcam and rover/site poses; sampled terrain line-of-sight check",
+  "limits": "Preview registration from telemetry, not hand-refined. Uncovered vertices keep original grayscale. Geometry and depth-source labels unchanged.",
+  "geometry_sha256": "cb0774971f45a702a5c70a53f2c3c2aca91c8f8d5157ff8d1008d97dfd13b36b",
+  "anchor_label": "NLB_489559555RASLF0481964NCAM00399M1.LBL",
+  "configuration": {
+   "max_images": 20
+  }
+ },
+ "variant": "mastcam-color"
+}

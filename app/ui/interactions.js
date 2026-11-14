@@ -76,24 +76,34 @@ export function connectExperience(view) {
     $('mesh-toggle').setAttribute('aria-pressed',String(enabled));api.GL.dirty=3;
   });
   if(view==='close'){
+    const entries=()=>window.marswalk.S.data.closeups.flatMap(c=>[c,...(window.marswalk.S.data.closeup_variants||[]).filter(v=>v.sol===c.sol)]);
+    const keyOf=stop=>stop.id||String(stop.sol);
+    const labelOf=stop=>stop.label||(stop.sol===1100?'Sol 1100 · Navcam grayscale':`Sol ${stop.sol}`);
     const updateSpecimen=key=>{
-      const closeups=window.marswalk?.S.data.closeups;if(!closeups)return;
-      const stop=closeups.find(c=>String(c.sol)===String(key)) || closeups.find(c=>c.sol===1100) || closeups[0];
-      $('specimen-title').textContent=key==='all'?`ALL RECONSTRUCTED STOPS / REFERENCE SOL ${stop.sol}`:`SPECIMEN / SOL ${stop.sol}`;
+      if(!window.marswalk?.S.data)return;const closeups=entries();
+      const stop=closeups.find(c=>keyOf(c)===String(key)) || closeups.find(c=>c.sol===1100) || closeups[0];
+      $('specimen-title').textContent=key==='all'?`ALL RECONSTRUCTED STOPS / REFERENCE SOL ${stop.sol}`:`SPECIMEN / ${labelOf(stop).toUpperCase()}`;
       for(const [id,file] of [['comparison-photo','step1_photo.jpg'],['comparison-depth','step2_stereo.png']]){
-        $(id).src=`${stop.folder}/img/${file}`;$(id).alt=`${id==='comparison-photo'?'Source Navcam photograph':'Measured stereo depth'} / Curiosity sol ${stop.sol}`;
+        $(id).src=`${stop.folder}/img/${file}`;$(id).alt=`${id==='comparison-photo'?(stop.variant?'Mastcam-color surface from above':'Source Navcam photograph'):'Measured stereo depth'} / Curiosity sol ${stop.sol}`;
       }
+      const color=Boolean(stop.variant);
+      document.querySelector('.photo-comparison').classList.toggle('color-preview',color);
+      $('comparison-depth').hidden=color;document.querySelector('.comparison-divider').hidden=color;
+      document.querySelector('.comparison-labels').hidden=color;
+      document.querySelector('.comparison-copy p').textContent=color
+        ? `Real Mastcam RGB is projected onto the existing sol-${stop.sol} geometry. ${(stop.color_coverage*100).toFixed(1)}% of vertices receive color from ${stop.color_photos} images; uncovered ground remains grayscale. This is a preview registration from camera telemetry. The image shows the surface from above.`
+        : 'Move the divider to compare the source photograph with its stereo depth visualization. Stereo is measured. Depth Anything V2 supplies estimated fills beyond that coverage.';
       $('specimen-measures').innerHTML=`<div><b>${stop.photos}</b><span>NAVCAM FRAMES</span></div><div><b>${Math.round(stop.area_m2).toLocaleString()} m²</b><span>RECONSTRUCTED AREA</span></div><div><b>${(stop.error*100).toFixed(1)}%</b><span>HELD-OUT DEPTH ERROR</span></div>`;
       document.querySelectorAll('[data-specimen]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.specimen===String(key))));
     };
     document.addEventListener('marswalk:ready',()=>{
-      const stops=window.marswalk.S.data.closeups;$('specimen-count').textContent=String(stops.length).padStart(2,'0');
+      const stops=entries();$('specimen-count').textContent=String(stops.length).padStart(2,'0');
       const frames=$('contact-frames');
       stops.forEach(stop=>{
-        const button=document.createElement('button');button.type='button';button.dataset.specimen=String(stop.sol);
-        const image=document.createElement('img');image.src=`${stop.folder}/img/step1_photo.jpg`;image.alt=`Navcam contact frame, sol ${stop.sol}`;image.loading='lazy';
-        const title=document.createElement('strong');title.textContent=`SOL ${stop.sol}`;const caption=document.createElement('small');caption.textContent=`${stop.photos} FRAMES / ${Math.round(stop.area_m2)} m²`;
-        button.append(image,title,caption);button.addEventListener('click',()=>{$('close-pick').value=String(stop.sol);$('close-pick').dispatchEvent(new Event('change'));});frames.append(button);
+        const button=document.createElement('button');button.type='button';button.dataset.specimen=keyOf(stop);
+        const image=document.createElement('img');image.src=`${stop.folder}/img/step1_photo.jpg`;image.alt=`${stop.variant?'Mastcam-color surface':'Navcam contact frame'}, sol ${stop.sol}`;image.loading='lazy';
+        const title=document.createElement('strong');title.textContent=labelOf(stop).toUpperCase();const caption=document.createElement('small');caption.textContent=stop.variant?`${stop.color_photos} RGB IMAGES / ${(stop.color_coverage*100).toFixed(1)}% COLOR`:`${stop.photos} FRAMES / ${Math.round(stop.area_m2)} m²`;
+        button.append(image,title,caption);button.addEventListener('click',()=>{$('close-pick').value=keyOf(stop);$('close-pick').dispatchEvent(new Event('change'));});frames.append(button);
       });
       updateSpecimen(new URLSearchParams(location.search).get('sol')||'1100');
     },{once:true});

@@ -8,6 +8,9 @@
   // AI4Mars 4-class regolith color palette (0=Soil 1=Bedrock 2=Sand 3=BigRock 255=Unknown→Soil)
   const REGOLITH_COL = { 0: [194, 178, 128], 1: [128, 128, 128], 2: [237, 201, 175], 3: [180, 50, 50], 255: [194, 178, 128] };
   const REGOLITH_NAMES = { 0: 'Soil', 1: 'Bedrock', 2: 'Sand', 3: 'Big Rock', 255: 'Unknown' };
+  const closeKey = c => c.id || String(c.sol);
+  const closeLabel = c => c.label || (c.sol === 1100 ? 'Sol 1100 · Navcam grayscale' : `Sol ${c.sol}`);
+  const closeEntries = () => S.data.closeups.flatMap(c => [c, ...(S.data.closeup_variants || []).filter(v => v.sol === c.sol)]);
   const CLOSE_MODES = ['photo', 'slope', 'regolith', 'depth_src'];
   const CLOSE_MODE_LABELS = { photo: 'Show walk slope', slope: 'Show AI4Mars regolith', regolith: 'Show depth source', depth_src: 'Show photo' };
 
@@ -404,7 +407,7 @@
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), optional ? 5000 : 25000);
     try {
-      const response = await fetch(url, { signal: controller.signal });
+      const response = await fetch(url, { signal: controller.signal, ...(type === 'json' ? { cache: 'no-cache' } : {}) });
       if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
       return await response[type]();
     } catch (error) {
@@ -423,7 +426,7 @@
   async function stopMetadata(c) {
     // A deployed build supplies the public facade URL. Static/offline hosting
     // continues to read the original local NASA-derived metadata directly.
-    if (window.MARS_NAVCAM_API) {
+    if (window.MARS_NAVCAM_API && !c.variant) {
       try {
         return await checkedAsset(new URL(`stops/${c.sol}`, window.MARS_NAVCAM_API).href, 'json');
       } catch (error) {
@@ -446,8 +449,13 @@
     const pos = new Float32Array(n * 3); for (let i = 0; i < n * 3; i++) pos[i] = p16[i] / 100;
     const geom = new THREE.BufferGeometry(); geom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     geom.setAttribute('color', new THREE.BufferAttribute(new Float32Array(n * 3), 3)); geom.setIndex(new THREE.BufferAttribute(idx, 1)); geom.computeVertexNormals();
+    let rgb = null;
+    if (meta.colorization?.asset) {
+      rgb = b64ToU8(await checkedAsset(c.folder + '/' + meta.colorization.asset, 'text'));
+      if (rgb.length !== n * 3) throw new Error('Invalid RGB vertex array');
+    }
     const regolith = null;
-    const sc = (closeCache[c.folder] = { geom, gray, src, slope, regolith, n, meta });
+    const sc = (closeCache[c.folder] = { geom, gray, rgb, src, slope, regolith, n, meta });
     paintStop(sc, 'photo');
     // Semantic labels are optional and must not hold the geometry loading screen open.
     checkedAsset(c.folder + '/regolith.b64.txt', 'text', true).then(encoded => {
@@ -474,17 +482,17 @@
         // src: 0 = stereo ground-truth (green), 1 = Depth Anything V2 fill (orange)
         rgb = sc.src[i] === 0 ? [0.2, 0.75, 0.35] : [0.95, 0.48, 0.15];
       } else {
-        // 'photo' mode: grayscale
-        const g = sc.gray[i] / 255; rgb = [g, g, g];
+        const g = sc.gray[i] / 255;
+        rgb = sc.rgb ? [sc.rgb[i * 3] / 255, sc.rgb[i * 3 + 1] / 255, sc.rgb[i * 3 + 2] / 255] : [g, g, g];
       }
       col[i * 3] = rgb[0]; col[i * 3 + 1] = rgb[1]; col[i * 3 + 2] = rgb[2];
     }
     sc.geom.attributes.color.needsUpdate = true;
   }
   async function showClose(key) {
-    const C = S.close, cs = S.data.closeups;
+    const C = S.close, cs = closeEntries();
     const requestId = C.requestId = (C.requestId || 0) + 1;
-    const list = key === 'all' ? cs : cs.filter((c) => String(c.sol) === key);
+    const list = key === 'all' ? S.data.closeups : cs.filter((c) => closeKey(c) === key);
     if (!list.length) return;
     $('statusclose').hidden = false; $('statusclose').textContent = 'Loading Navcam ground model…';
     try {
@@ -504,6 +512,12 @@
       const r = key === 'all' ? far * 0.55 : 0;   // aim at the middle of all stops
       C.o.ctl.target.set(mx, -1, mz); C.o.cam.position.set(mx - 0.45 * r - 9, 0.5 * r + 11, mz + 0.6 * r + 13); C.o.ctl.maxDistance = far * 4 + 60;
       $('close-report').hidden = key === 'all'; if (key !== 'all') $('close-report').href = list[0].folder + '/index.html';
+      C.activeColor = list.length === 1 ? scenes[0].meta.colorization : null;
+      if (C.activeColor?.focus) {
+        const [x, y, z] = C.activeColor.focus;
+        C.o.ctl.target.set(x, y, z);
+        C.o.cam.position.set(x - 9, y + 11, z + 13);
+      }
       $('statusclose').hidden = true;
       updateCloseLegend(C.closeMode);
       document.dispatchEvent(new CustomEvent('marswalk:specimen', {detail:key}));
@@ -512,6 +526,11 @@
   }
   function updateCloseLegend(mode, keyId = 'close-key') {
     const k = $(keyId); if (!k) return;
+    if (mode === 'photo' && keyId === 'close-key' && S.close?.activeColor) {
+      const color = S.close.activeColor;
+      k.innerHTML = `<div class="key-title">Mastcam color · Navcam geometry</div><span><i class="sw" style="background:#bf9270"></i>NASA Mastcam RGB</span><span><i class="sw" style="background:#888"></i>Original grayscale where uncovered</span><div class="key-sub">${(color.vertex_coverage * 100).toFixed(1)}% of vertices colored · ${color.images.length} source images</div>`;
+      return;
+    }
     if (mode === 'regolith') {
       k.innerHTML = `
         <div class="key-title">AI4Mars Regolith Classification</div>
@@ -585,11 +604,11 @@
     initClose(String(key));
   }
   function listCloseups() {
-    const cs = S.data.closeups;
+    const cs = closeEntries();
     S.closeSols = new Set(cs.map((c) => c.sol));
-    $('close-pick').innerHTML = cs.map((c) => `<option value="${c.sol}">sol ${c.sol}</option>`).join('') + (cs.length > 1 ? '<option value="all">All stops together</option>' : '');
+    $('close-pick').innerHTML = cs.map((c) => `<option value="${closeKey(c)}">${closeLabel(c)}</option>`).join('') + (cs.length > 1 ? '<option value="all">All stops together</option>' : '');
     const def = cs.find((c) => c.sol === 1100) || cs[0]; if (def) $('close-pick').value = String(def.sol);
-    $('closeup-list').innerHTML = cs.map((c) => `<button data-sol="${c.sol}">Sol ${c.sol}<span>${c.photos} photos · ${Math.round(c.area_m2)} m² · ${(c.error * 100).toFixed(1)}% error</span></button>`).join('') +
+    $('closeup-list').innerHTML = cs.map((c) => `<button data-sol="${closeKey(c)}">${closeLabel(c)}<span>${c.photos} photos · ${Math.round(c.area_m2)} m² · ${(c.error * 100).toFixed(1)}% error</span></button>`).join('') +
       (cs.length > 1 ? '<button data-sol="all">All stops together<span>placed by real position</span></button>' : '');
     $('closeup-list').querySelectorAll('button').forEach((b) => b.addEventListener('click', () => openClose(b.dataset.sol)));
   }
@@ -965,7 +984,7 @@
     if (view === 'terrain' && S.H) setTimeout(() => { try { initTerrain3d(); } catch (error) { console.error(error); document.dispatchEvent(new Event('marswalk:error')); } }, 10);
     if (view === 'close') {
       const requested = new URLSearchParams(location.search).get('sol');
-      const valid = requested === 'all' || S.data.closeups.some(c => String(c.sol) === requested);
+      const valid = requested === 'all' || closeEntries().some(c => closeKey(c) === requested);
       initClose(valid ? requested : undefined);
     }
     if (view === 'street') initStreet();

@@ -59,8 +59,11 @@ def health():
 
 # Keep API routes above this mount. Directory HTML resolution serves / and all
 # physical exploration routes, including when CDN promotion is unavailable.
+SITE = Path(__file__).resolve().parent / "site"
+if not SITE.is_dir():
+    SITE = Path(__file__).resolve().parents[2]  # Local checkout, before deployment staging.
 app.mount(
     "/",
-    StaticFiles(directory=str(Path(__file__).resolve().parent / "site"), html=True, check_dir=False),
+    StaticFiles(directory=str(SITE), html=True),
     name="website",
 )
