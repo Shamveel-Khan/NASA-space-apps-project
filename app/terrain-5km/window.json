@@ -1,0 +1,21 @@
+{
+  "size_m": 5000,
+  "grid_m": 2,
+  "cols": 2500,
+  "rows": 2500,
+  "height_min": -4488.44091796875,
+  "map_px_m": 1.220703125,
+  "offset_x": 1500,
+  "offset_y": 1500,
+  "bounds": [
+    8140024.951256958,
+    -279480.6737398773,
+    8145024.951256958,
+    -274480.6737398773
+  ],
+  "sources": {
+    "dem": "MSL_Gale_DEM_Mosaic_1m_v3.tif",
+    "color": "MSL_Gale_HiRISE-LRGB_78quads_sharp_cog.tif"
+  },
+  "hazard_source": "Slope and roughness approximation from USGS DEM"
+}

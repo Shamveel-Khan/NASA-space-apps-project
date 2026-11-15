@@ -1,0 +1,19 @@
+# downloads, caches and generated 3D files (rebuild with the scripts)
+./data.zip
+data/
+notebooks/train_raw/
+notebooks/data/
+*.part
+__pycache__/
+.ipynb_checkpoints/
+.commandcode/
+
+# Local Vercel state and generated deployment artifacts
+.vercel/
+services/app/public/
+services/navcam3d/dataset/
+
+services/app/site/
+data.zip
+data.zip
+data.zip
